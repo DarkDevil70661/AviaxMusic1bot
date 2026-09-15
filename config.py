@@ -53,7 +53,7 @@ class Config:
         self.DEFAULT_THUMB = getenv("DEFAULT_THUMB", "https://files.catbox.moe/zp9asd.jpg")
         
         # --- NEW PING VIDEO LINK ADDED HERE ---
-        self.PING_IMG = getenv("PING_IMG", "https://files.catbox.moe/3bvz5w.mp4")
+        self.PING_IMG = getenv("PING_IMG", "https://files.catbox.moe/nhxbs6.mp4")
         
         self.START_IMG = getenv("START_IMG", "https://files.catbox.moe/apmhnm.jpg")
         self.START_VIDEO = getenv("START_VIDEO", "https://files.catbox.moe/8yxopd.mp4")
