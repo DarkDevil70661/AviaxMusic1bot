@@ -38,13 +38,13 @@ async def start(_, message: types.Message):
 
     # --- LOADING ANIMATION SEQUENCE FOR PRIVATE CHAT ---
     if private:
-        loading_1 = await message.reply_text("<b>⚡ ʟᴏᴀᴅɪɴɢ...</b>")
+        loading_1 = await message.reply_text("<b>ᴌᴏᴀᴅɪɴɢ....</b>")
         await asyncio.sleep(0.3)
-        await loading_1.edit_text("<b>🚀 ꜱᴛᴀʀᴛɪɴɢ ʙᴏᴛ...</b>")
+        await loading_1.edit_text("<b>ꜱᴛᴀʀᴛɪɴɢ..ʙᴀʙʏ.❤️❤️</b>")
         await asyncio.sleep(0.3)
-        await loading_1.edit_text("<b>🔥 ʙᴏᴛ ɪs ᴀʟɪᴠᴇ ɴᴏᴡ!</b>")
+        await loading_1.edit_text("<b>ɪ ᴀᴍ ᴀʟɪᴠᴇ ʙᴀʙʏ❤️😌🫣🫣</b>")
         await asyncio.sleep(0.5)
-        await loading_1.edit_text("<b>✨ ʙᴏᴛ ʀᴇᴀᴅʏ ✨</b>")
+        await loading_1.edit_text("<b>BETA ʙᴏᴛs🫣🫣.</b>")
         await asyncio.sleep(0.5)
         await loading_1.delete()
 
@@ -63,19 +63,12 @@ async def start(_, message: types.Message):
 
     key = buttons.start_key(message.lang, private)
     
-    # --- SEND VIDEO OR FALLBACK TO TEXT SAFELY ---
-    try:
-        await message.reply_video(
-            video=config.START_VIDEO,
-            caption=_text,
-            reply_markup=key
-        )
-    except Exception:
-        # ভিডিও লিংক ফেইল করলে যাতে বট ক্র্যাশ না করে টেক্সট পাঠিয়ে দেবে
-        await message.reply_text(
-            text=_text,
-            reply_markup=key
-        )
+    # --- SEND VIDEO BELOW TEXT ---
+    await message.reply_video(
+        video=config.START_VIDEO,  # Make sure START_VIDEO is defined in your config.py
+        caption=_text,
+        reply_markup=key
+    )
 
     if private:
         if await db.is_user(message.from_user.id):
@@ -123,6 +116,7 @@ async def _new_member(_, message: types.Message):
 # 🛠️ EDIT SYSTEM FOR HELP, START & CLOSE 🛠️
 # ==========================================
 
+# Ek single handler jo Home, Help aur uske sabhi sub-menus ko properly route karega
 @app.on_callback_query(filters.regex(r"^help(?: (.*))?$") & ~app.bl_users)
 @lang.language()
 async def unified_help_menu_cb(_, query: types.CallbackQuery):
@@ -131,11 +125,13 @@ async def unified_help_menu_cb(_, query: types.CallbackQuery):
 
     try:
         if not module: 
+            # Agar sirf "help" data aaya hai, toh Help Menu par edit karega
             await query.message.edit_caption(
                 caption=query.lang["help_menu"],
                 reply_markup=buttons.help_markup(query.lang)
             )
         elif module == "home": 
+            # Agar "help home" aaya hai, toh Start Menu par wapas edit karega
             _text = (
                 query.lang["start_pm"].format(query.from_user.first_name, app.name)
                 if private
@@ -146,6 +142,7 @@ async def unified_help_menu_cb(_, query: types.CallbackQuery):
                 reply_markup=buttons.start_key(query.lang, private)
             )
         else: 
+            # Help ke andar wale menus (Admins, Play, etc.)
             await query.message.edit_caption(
                 caption=query.lang[f"help_{module}"],
                 reply_markup=buttons.help_markup(query.lang, back=True)
@@ -157,6 +154,7 @@ async def unified_help_menu_cb(_, query: types.CallbackQuery):
         
     await query.answer()
 
+# Close button ka handler taaki panel theek se delete ho sake
 @app.on_callback_query(filters.regex("^(close|close_panel)$") & ~app.bl_users)
 async def close_menu_cb(_, query: types.CallbackQuery):
     try:
