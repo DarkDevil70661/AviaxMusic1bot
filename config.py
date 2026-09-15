@@ -50,13 +50,13 @@ class Config:
         self.DURATION_LIMIT = int(getenv("DURATION_LIMIT", "17000"))
         self.PLAYLIST_LIMIT = int(getenv("PLAYLIST_LIMIT", "200"))
         self.YOUTUBE_API_KEY = getenv("YOUTUBE_API_KEY", "INFLEX99600328D")
-        self.DEFAULT_THUMB = getenv("DEFAULT_THUMB", "https://i.supaimg.com/d8919cc0-dc9c-41e0-9c14-2ff75835e603/d7f04733-5c23-4dfc-a30f-50490c4a8022.png")
+        self.DEFAULT_THUMB = getenv("DEFAULT_THUMB", "https://files.catbox.moe/zp9asd.jpg")
         
         # --- NEW PING VIDEO LINK ADDED HERE ---
-        self.PING_IMG = getenv("PING_IMG", "https://radare.arzfun.com/api/tg/file?id=BAACAgUAAxkBAAEMsPNqV_Zr0LC9pwmtzWakOIchnXuIdQACiyAAAj56wVbxBM2QDTx3Fz0E&name=ENBUTHB6dnrNmQdH3dLRWe.mp4&header=video/mp4")
+        self.PING_IMG = getenv("PING_IMG", "https://files.catbox.moe/3bvz5w.mp4")
         
-        self.START_IMG = getenv("START_IMG", "https://files.catbox.moe/etdhlr.jpg")
-        self.START_VIDEO = getenv("START_VIDEO", "https://files.catbox.moe/0v9z4o.mp4")
+        self.START_IMG = getenv("START_IMG", "https://files.catbox.moe/apmhnm.jpg")
+        self.START_VIDEO = getenv("START_VIDEO", "https://files.catbox.moe/8yxopd.mp4")
 
     def check(self):
         missing = [
