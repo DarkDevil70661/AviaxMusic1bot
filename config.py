@@ -56,7 +56,7 @@ class Config:
         self.PING_IMG = getenv("PING_IMG", "https://files.catbox.moe/nhxbs6.mp4")
         
         self.START_IMG = getenv("START_IMG", "https://files.catbox.moe/n4ngx6.jpg")
-        self.START_VIDEO = getenv("START_VIDEO", "https://files.catbox.moe/0v9z4o.mp4")
+        self.START_VIDEO = getenv("START_VIDEO", "https://files.catbox.moe/yopohy.mp4")
 
     def check(self):
         missing = [
