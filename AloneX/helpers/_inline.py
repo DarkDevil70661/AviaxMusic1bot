@@ -1,13 +1,3 @@
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# ʏ_ꜱʜᴀᴅᴏᴡ_ᴍᴜꜱɪᴄ
-# ᴀᴅᴠᴀɴᴄᴇᴅ ᴍᴜꜱɪᴄ & ᴠɪᴅᴇᴏ ʙᴏᴛ
-# • ᴍᴜꜱɪᴄ • ᴠɪᴅᴇᴏ • ʟɪᴠᴇ
-# • ꜰᴀꜱᴛ • ꜱᴛᴀʙʟᴇ • ꜱᴇᴄᴜʀᴇ
-# ᴅᴇᴠ : ᴇɴᴀꜰᴜʟ
-# ᴠᴇʀ : ᴠ3.0.0
-# Year : 2026
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 # =====================================================================
 # Project: X_SHADOW_MUSIC
 # Author: ENAFUL
@@ -112,7 +102,7 @@ class Inline:
                 [
                     self.ikb(
                         text="⌯ 𝐂ʟσsє ⌯",
-                        callback_data="close", # 🛠️ FIXED: Changed from "autoplay_panel close"
+                        callback_data="close",
                         style=ButtonStyle.DANGER
                     )
                 ]
@@ -164,11 +154,10 @@ class Inline:
                 ]
             )
             
-            # 🛠️ YAHAN PAR BUTTON KO PANEL OPEN SE LINK KIYA GAYA HAI
             keyboard.append(
                 [
                     self.ikb(text="▶️ 𝐀ᴜᴛᴏ-𝐏ʟᴀʏ", callback_data=f"AUTOPLAY_PANEL_OPEN|{chat_id}", style=style[2]),
-                    self.ikb(text="ᴄʟᴏɴᴇ-ᴍᴇ", url="https://t.me/Music_Bot_Center", style=style[2]),
+                    self.ikb(text="ᴄʟᴏɴᴇ-ᴍᴇ", url="https://t.me/RituMusicCloneBot", style=style[2]),
                 ]
             )
             
@@ -184,7 +173,7 @@ class Inline:
                     ),
                     self.ikb(
                         text=_lang.get("close", "⌯ 𝐂ʟσsє ⌯"),
-                        callback_data="close", # 🛠️ FIXED: Changed from "help close"
+                        callback_data="close",
                         style=style[0],
                     ),
                 ]
@@ -199,41 +188,42 @@ class Inline:
         if back:
             rows = [
                 [
-                    self.ikb(text=_lang.get("back", "🔙 Back"), callback_data="help back", style=style[0]),
-                    self.ikb(text=_lang.get("home_btn", "🏠 Home"), callback_data="help home", style=style[0]),
-                    self.ikb(text=_lang.get("close", "🗑 Close"), callback_data="close", style=style[0]), # 🛠️ FIXED
+                    self.ikb(text=_lang.get("back", "« 𝐁ᴀᴄᴋ"), callback_data="help back", style=style[0]),
+                    self.ikb(text=_lang.get("home_btn", "⌂ 𝐇ᴏᴍᴇ"), callback_data="help home", style=style[0]),
+                    self.ikb(text=_lang.get("close", "✕ 𝐂ʟσsє"), callback_data="close", style=style[0]),
                 ]
             ]
         else:
+            # 🛠️ New Bold & Clean Design Without Emojis
             button_names = {
-                "admins": "👮 Admins",
-                "auth": "🔐 Auth",
-                "blist": "🚫 Blacklist",
-                "lang": "🌐 Language",
-                "ping": "🏓 Ping",
-                "play": "🎵 Play",
-                "queue": "📋 Queue",
-                "stats": "📊 Stats",
-                "sudo": "👑 Sudoers",
-                "autoplay": "▶️ Autoplay",
-                "vclogger": "🎙 VC Logger"
+                "play": "𝐏ʟᴀʏ 𝐌ᴜsɪᴄ",
+                "queue": "𝐐ᴜᴇᴜᴇ 𝐋ɪsᴛ",
+                "admins": "𝐀ᴅᴍɪɴ 𝐂ᴏɴᴛʀᴏʟ",
+                "auth": "𝐀ᴜᴛʜ 𝐔sᴇʀs",
+                "blist": "𝐁ʟᴀᴄᴋʟɪsᴛ",
+                "lang": "𝐋ᴀɴɢᴜᴀɢᴇ",
+                "ping": "sʏsᴛᴇᴍ 𝐏ɪɴɢ",
+                "stats": "𝐁ᴏᴛ sᴛᴀᴛs",
+                "sudo": "𝐒ᴜᴅᴏ 𝐌ᴇᴍʙᴇʀ",
+                "autoplay": "𝐀ᴜᴛᴏ-𝐏ʟᴀʏ",
+                "vclogger": "𝐕𝐂 𝐋ᴏɢɢᴇʀ"
             }
             cbs = list(button_names.keys())
             rows = []
             
-            for i in range(0, len(cbs), 3):
-                row_cbs = cbs[i : i + 3]
-                row_style = style[(i // 3) % 3]
+            for i in range(0, len(cbs), 2): # প্রতি সারিতে ২টি করে সুন্দর ও বড় সাইজের বাটন রাখা হয়েছে
+                row_cbs = cbs[i : i + 2]
+                row_style = style[(i // 2) % 3]
                 rows.append([
-                    self.ikb(text=button_names[cb], callback_data=f"help {cb}", style=row_style)
+                    self.ikb(text=f"▪ {button_names[cb]} ▪", callback_data=f"help {cb}", style=row_style)
                     for cb in row_cbs
                 ])
                 
             last_style = style[len(rows) % 3]
             rows.append(
                 [
-                    self.ikb(text=_lang.get("home_btn", "🏠 Home"), callback_data="help home", style=last_style),
-                    self.ikb(text=_lang.get("close", "🗑 Close"), callback_data="close", style=last_style), # 🛠️ FIXED
+                    self.ikb(text=_lang.get("home_btn", "⌂ 𝐇ᴏᴍᴇ"), callback_data="help home", style=last_style),
+                    self.ikb(text=_lang.get("close", "✕ 𝐂ʟσsє"), callback_data="close", style=last_style),
                 ]
             )
 
@@ -300,11 +290,11 @@ class Inline:
             [
                 [
                     self.ikb(text=lang["play_mode"] + " ➜", callback_data="settings", style=style[0]),
-                    self.ikb(text=admin_only, callback_data="settings play", style=style[0]),
+                    self.ikb(text=str(admin_only), callback_data="settings play", style=style[0]),
                 ],
                 [
                     self.ikb(text=lang["cmd_delete"] + " ➜", callback_data="settings", style=style[1]),
-                    self.ikb(text=cmd_delete, callback_data="settings delete", style=style[1]),
+                    self.ikb(text=str(cmd_delete), callback_data="settings delete", style=style[1]),
                 ],
                 [
                     self.ikb(text=lang["language"] + " ➜", callback_data="settings", style=style[2]),
